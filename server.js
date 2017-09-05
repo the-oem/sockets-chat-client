@@ -3,7 +3,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-const connectedUsers = [];
+// const connectedUsers = [];
 
 const path = require('path');
 
@@ -15,15 +15,19 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   // console.log(`User socket ${socket.id} connected.`);
-  socket.broadcast.emit('broadcast', 'New user connected.');
+  socket.broadcast.emit('broadcast', `New user (${socket.id}) connected.`);
 
   socket.on('disconnect', function(){
     // console.log(`User socket ${socket.id} disconnected.`);
-    socket.broadcast.emit('broadcast', 'A user disconnected.');
+    socket.broadcast.emit('broadcast', `A user (${socket.id}) disconnected.`);
   });
 
   socket.on('chat message', function(msg){
     socket.broadcast.emit('broadcast', msg);
+  });
+
+  socket.on('typing', function (data) {
+    socket.broadcast.emit('typing', data);
   });
 });
 
