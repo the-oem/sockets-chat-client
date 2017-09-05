@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Socket.IO chat</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+  <link href="/assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <section class="nav-container">
+    <div class="title">SMACK<span>TALK</span></div>
+    <div>
+      Nickname: <input class="username-input" /><button class="username-btn">Save</button>
+    </div>
+  </section>
+  <section class="main-container">
+    <div class="users-container">
+      Connected Users:
+      <ul id="users"></ul>
+    </div>
+    <div class="messages-container">
+      <ul id="messages"></ul>
+      <div class="typing"></div>
+    </div>
+  </section>
+  <section class="input-container">
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </section>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="/assets/js/script.js"></script>
+
+</html>
